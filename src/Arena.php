@@ -44,6 +44,29 @@ class Arena
         return false;
     }
 
+    public function move(Fighter $fighter, string $direction): void
+    {
+        $offsets = [
+            "N" => ['x' => 0, 'y' => -1],
+            "S" => ['x' => 0, 'y' => +1],
+            "W" => ['x' => -1, 'y' => 0],
+            "E" => ['x' => +1, 'y' => 0],
+        ];
+        if (!isset($offsets[$direction])) {
+            throw new Exception("Invalid direction: $direction");
+        }
+        $destinationX = $fighter->getX() + $offsets[$direction]['x'];
+        $destinationY = $fighter->getY() + $offsets[$direction]['y'];
+        if (!$this->isValidPosition($destinationX, $destinationY)) {
+            throw new Exception("Invalid position: $destinationX, $destinationY");
+        }
+        if ($this->isPositionTaken($destinationX, $destinationY)) {
+            throw new Exception("Position already occupied: $destinationX, $destinationY");
+        }
+        $fighter->setX($destinationX);
+        $fighter->setY($destinationY);
+    }
+
     /**
      * Get the value of monsters
      */ 
