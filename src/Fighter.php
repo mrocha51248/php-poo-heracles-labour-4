@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Fighter
+abstract class Fighter
 {
     public const MAX_LIFE = 100;
 
