@@ -86,6 +86,11 @@ class Arena
         }
         $hero->fight($monster);
 
+        if (!$monster->isAlive()) {
+            $this->removeMonster($monster);
+            return;
+        }
+
         // Monster attacks hero
         if (!$this->touchable($monster, $hero)) {
             throw new Exception("Hero out of range for {$monster->getName()}");
