@@ -11,10 +11,10 @@ abstract class Fighter
     private int $dexterity;
     private string $image = 'fighter.svg';
     private int $life = self::MAX_LIFE;
-    private int $experience;
     private int $x;
     private int $y;
     protected float $range = 1;
+    protected int $experience;
 
     public function __construct(
         string $name,
