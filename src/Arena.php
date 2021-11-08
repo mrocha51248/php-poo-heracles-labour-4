@@ -88,6 +88,7 @@ class Arena
 
         if (!$monster->isAlive()) {
             $this->removeMonster($monster);
+            $hero->setExperience($hero->getExperience() + $monster->getExperience());
             return;
         }
 
