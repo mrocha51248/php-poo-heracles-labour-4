@@ -110,6 +110,14 @@ class Arena
         $this->monsters = $monsters;
     }
 
+    public function removeMonster(Monster $monster)
+    {
+        $key = array_search($monster, $this->monsters);
+        if ($key !== false) {
+            unset($this->monsters[$key]);
+        }
+    }
+
     /**
      * Get the value of hero
      */ 
