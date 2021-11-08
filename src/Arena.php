@@ -29,6 +29,11 @@ class Arena
         return $this->getDistance($attacker, $defenser) <= $attacker->getRange();
     }
 
+    public function isValidPosition(int $x, int $y): bool
+    {
+        return $x >= 0 && $y >= 0 && $x < $this->getSize() && $y < $this->getSize();
+    }
+
     /**
      * Get the value of monsters
      */ 
