@@ -34,6 +34,16 @@ class Arena
         return $x >= 0 && $y >= 0 && $x < $this->getSize() && $y < $this->getSize();
     }
 
+    public function isPositionTaken(int $x, int $y): bool
+    {
+        foreach ([$this->getHero(), ...$this->getMonsters()] as $fighter) {
+            if ($fighter->getX() === $x && $fighter->getY() === $y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Get the value of monsters
      */ 
