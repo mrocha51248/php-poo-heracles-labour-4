@@ -72,6 +72,27 @@ class Arena
         return isset($this->getMonsters()[$id]);
     }
 
+    public function battle(int $id): void
+    {
+        if (!$this->isValidMonsterId($id)) {
+            throw new Exception("Invalid monster id: $id");
+        }
+        $hero = $this->getHero();
+        $monster = $this->getMonsters()[$id];
+
+        // Hero attacks monster
+        if (!$this->touchable($hero, $monster)) {
+            throw new Exception("{$monster->getName()} out of range for Hero");
+        }
+        $hero->fight($monster);
+
+        // Monster attacks hero
+        if (!$this->touchable($monster, $hero)) {
+            throw new Exception("Hero out of range for {$monster->getName()}");
+        }
+        $monster->fight($hero);
+    }
+
     /**
      * Get the value of monsters
      */ 
