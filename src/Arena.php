@@ -67,6 +67,11 @@ class Arena
         $fighter->setY($destinationY);
     }
 
+    public function isValidMonsterId(int $id): bool
+    {
+        return isset($this->getMonsters()[$id]);
+    }
+
     /**
      * Get the value of monsters
      */ 
