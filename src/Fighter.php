@@ -11,6 +11,7 @@ abstract class Fighter
     private int $dexterity;
     private string $image = 'fighter.svg';
     private int $life = self::MAX_LIFE;
+    private int $experience;
     private int $x;
     private int $y;
     protected float $range = 1;
@@ -167,5 +168,29 @@ abstract class Fighter
     public function getRange(): float
     {
         return $this->range;
+    }
+
+    /**
+     * Get the value of experience
+     *
+     * @return int
+     */
+    public function getExperience(): int
+    {
+        return $this->experience;
+    }
+
+    /**
+     * Set the value of experience
+     *
+     * @param int $experience
+     *
+     * @return self
+     */
+    public function setExperience(int $experience): self
+    {
+        $this->experience = $experience;
+
+        return $this;
     }
 }
